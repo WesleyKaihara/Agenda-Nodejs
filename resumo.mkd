@@ -1,0 +1,67 @@
+# Resumo Modulo npm,mongodb,express,node(NodeJS)
+
+## Arquivo .env
+
+- arquivo não é enviado para gitHub
+- arquivo onde são colocados dados privados
+
+## Mongoose
+
+- Modelar base de dados
+- verificar dados 
+
+## session 
+
+- guarda cookie 
+- id de sessão 
+- guardar dados
+
+## mongoStore 
+
+- guardar sessões na base de dados
+
+## flash 
+
+- mensagem autodestrutivas
+- feedback
+- salvas em sessions
+
+## path 
+
+- caminhos
+
+## helmet 
+
+- segurança
+
+## csrf 
+
+- tokens
+- segurança-Cross-site Request Forgery (CSRF) 
+
+## middleware 
+
+- intermediador
+- pode ter mais de um
+
+## arquivos estaticos
+
+- imagens 
+- css
+- bundle
+
+## views 
+
+- arquivos rederizados na tela
+- geralmente html
+- EJS
+- engines 
+
+## Padrao MVC
+
+- Models
+- Views 
+- Controllers
+
+
+

@@ -1,0 +1,15 @@
+<% Controle de Fluxo (if,for...) %>
+<%= Imprime espacapando caracteres %>  //apresenta
+<%= Imprime sem escapar caracteres %>  //executa
+<%# Comentário %>
+<%- include('Caminho/arquivo'); %> 
+
+
+<%if(typeof titulo !=='undefined' ){ %>
+    <%= titulo %>
+<% } else { %>
+    Titulo não foi enviado
+<%} %>
+
+ 
+
