@@ -2,7 +2,11 @@
 //São apresentados os contatos de acordo com a session
 //http://localhost:3000
 
-exports.index = (req, res) => {
-  res.render('index')
+
+const Contato = require('../models/ContatoModel')
+
+exports.index = async (req, res) => {
+  const contatos = await Contato.buscaContatos()
+  res.render('index', { contatos })
 }
 

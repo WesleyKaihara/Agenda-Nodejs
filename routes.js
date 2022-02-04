@@ -13,6 +13,7 @@ route.get('/', homeController.index);  // Rota para acessar a página Principal 
 //Rotas de login   
 //Metodo      //Rota           //Controller - Parte funcional 
 route.get('/login/index', loginController.index);  //Rota onde há um formulário para realiazação de um cadastro ou login
+route.get('/register', loginController.indexRegister)
 route.post('/login/register', loginController.register); //Rota POST , utilizada quando enviado o formulário de Cadastro de USUÁRIOS
 route.post('/login/login', loginController.login); //Rota POST, utilizado para realizar login
 route.get('/login/logout', loginController.logout);//Rota usada para finalizar session , assim realizando o logout
@@ -23,6 +24,11 @@ route.get('/contato/index', loginRequired, contatoController.index);  //Rota ond
 route.post('/contato/register', loginRequired, contatoController.register); //Rota POST , utilizada para enviar o formulário de cadastro de CONTATOS
 route.get('/contato/index/:id', loginRequired, contatoController.editIndex); //Rota apresenta os valores do contato após sua criação, para um possivel atualização de dados
 route.post('/contato/edit/:id', loginRequired, contatoController.edit); //Rota para atualizar contatos no banco de dados
+route.get('/contato/delete/:id', loginRequired, contatoController.delete); //Rota para atualizar contatos no banco de dados
 
+
+//Rotas para Alunos
+
+route.get('/Portal', loginController.portal)
 
 module.exports = route;  //exporta todas os dados de controle de rotas 

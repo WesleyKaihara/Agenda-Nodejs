@@ -1,0 +1,41 @@
+<%- include('includes/head') %>
+  <!--Recebe o cabeçalho  de outro arquivo (/includes/head)-->
+
+  <%- include('includes/nav') %>
+    <!--Recebe a barra de navegação de outro arquivo(/includes/nav)-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <!--borda da Página -->
+
+        <div class="col-lg-8 my-3">
+          <h1 class=" text-center">
+            Portal do Professor
+          </h1>
+          <p class="text-center lead">
+            Ver eventos,tarefas,faltas e notas
+          </p>
+
+          <div>
+            <% console.log(session)%>
+              <p>
+                <b>Email:</b>
+                <%= session.user.email%>
+              </p>
+          </div>
+
+          <%- include('includes/messages')%>
+
+
+
+        </div>
+        <!--Fim do Conteúdo-->
+
+        <div class="col-lg-2"></div>
+        <!--borda da Página -->
+
+      </div>
+    </div>
+
+    <%- include('includes/footer') %>

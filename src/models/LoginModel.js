@@ -5,6 +5,7 @@ const bcryptjs = require('bcryptjs');
 const LoginSchema = new mongoose.Schema({    //tratar dados
   email: { type: String, required: true },
   password: { type: String, required: true },
+  cargo: { type: String, required: true }
 });
 
 const LoginModel = mongoose.model('Login', LoginSchema);
@@ -14,6 +15,7 @@ class Login {
     this.body = body;
     this.errors = [];
     this.user = null;
+    this.cargo = undefined;
   }
 
   async login() {
@@ -32,8 +34,17 @@ class Login {
       this.errors.push('Senha incorreta');
       this.user = null;
     }
+
+    await this.Cargo();
+
   }
 
+  async Cargo() {
+    await LoginModel.find({ email: this.body.email })
+      .then(user => {
+        this.cargo = user[0].cargo
+      })
+  }
 
   async register() {
     this.valida();
@@ -64,6 +75,11 @@ class Login {
     if (this.body.password.length < 3 || this.body.password.length >= 50) {
       this.errors.push('A senha precisa ter entre 3 e 50 caracteres')
     }
+
+    // if (this.body.cargo == undefined) {
+    //   this.errors.push('Selecione um Cargo')
+    // }
+
   }
 
   cleanUp() {
@@ -75,9 +91,13 @@ class Login {
 
     this.body = {
       email: this.body.email,
-      password: this.body.password
+      password: this.body.password,
+      cargo: this.body.cargo
     }
   }
+
+
+
 }
 
 module.exports = Login;

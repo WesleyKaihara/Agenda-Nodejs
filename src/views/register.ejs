@@ -6,15 +6,15 @@
 
     <div class="container">
       <div class="row">
-        <div class="col-lg-2"></div>
+        <div class="col-lg-3"></div>
         <!--borda da Página -->
 
-        <div class="col-lg-8 my-3">
+        <div class="col-lg-6 my-3">
           <h1 class=" text-center">
-            Painel do Aluno
+            Criar conta ou Entrar
           </h1>
           <p class="text-center lead">
-            Faça login com seu email Institucional
+            Faça login ou crie sua conta abaixo
           </p>
 
           <%- include('includes/messages')%>
@@ -22,13 +22,13 @@
             <div class="row">
 
               <div class="col-lg">
-                <h4>Login</h4>
-                <p>Se você não possui um email, entrar em contato com a instituição:</p>
+                <h4>Faça seu cadastro</h4>
+                <p>Se você ainda não tem conta, preencha o formulário abaixo:</p>
 
-                <form action="/login/login" method="POST">
 
+
+                <form action="/login/register" method="POST">
                   <input type="hidden" name="_csrf" value=<%=csrfToken%>>
-
                   <div class="form-group">
                     <label>Seu e-mail</label>
                     <input type="email" class="form-control" name="email">
@@ -38,20 +38,28 @@
                     <label>Sua senha</label>
                     <input type="password" class="form-control" name="password">
                   </div>
+                  <br>
+                  <div class="form-group">
+
+                    <label>Cargo</label><br>
+                    <input type="radio" name="cargo" value="Aluno">
+                    <label for="html">Aluno</label><br>
+                    <input type="radio" name="cargo" value="Professor">
+                    <label for="Professor">Professor</label><br>
+                    <input type="radio" name="cargo" value="Admin">
+                    <label for="Admin">Admin</label><br>
+                  </div>
 
                   <br />
-                  <button type="submit" class="btn btn-primary">Entrar</button>
+                  <button type="submit" class="btn btn-primary">Criar minha conta</button>
                 </form>
-
               </div>
-
             </div>
-
 
         </div>
         <!--Fim do Conteúdo-->
 
-        <div class="col-lg-2"></div>
+        <div class="col-lg-3"></div>
         <!--borda da Página -->
       </div>
 

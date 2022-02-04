@@ -1,8 +1,27 @@
 const Login = require('../models/LoginModel');
 
 exports.index = (req, res) => {
-  if (req.session.user) return res.render('login-logado')
   return res.render('login')
+}
+
+exports.portal = (req, res) => {
+  console.log(req.session)
+  if (req.session.user.cargo === 'Aluno') {
+    return res.render('aluno', { session: req.session })
+  }
+  else if (req.session.user.cargo === 'Professor') {
+    return res.render('professor', { session: req.session })
+  }
+  else if (req.session.user.cargo === 'Admin') {
+    return res.render('admin', { session: req.session })
+  }
+  else {
+    return res.render('404')
+  }
+}
+
+exports.indexRegister = (req, res) => {
+  return res.render('register')
 }
 
 exports.register = async (req, res) => {
@@ -40,16 +59,26 @@ exports.login = async (req, res) => {
     }
 
     req.flash('success', 'Você entrou no sistema');
+
     req.session.user = login.user;
     req.session.save(function () {
-      return res.redirect('index');
-    });
+      if (req.session.user.cargo === 'Aluno') {
+        return res.render('aluno', { session: req.session })
+      }
+      else if (req.session.user.cargo === 'Professor') {
+        return res.render('professor', { session: req.session })
+      }
+      else if (req.session.user.cargo === 'Admin') {
+        return res.render('admin', { session: req.session })
+      }
+      else {
+        return res.render('404')
+      }
 
+    })
   } catch (e) {
-    console.log(e);
-    return res.render('404');
+    console.log(e)
   }
-
 }
 
 exports.logout = function (req, res) {

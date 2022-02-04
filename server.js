@@ -1,3 +1,4 @@
+
 require('dotenv').config();  //dotenv - armazenar valores sensíveis - não são enviados para github
 const express = require('express');//Framework para nodejs auxilia na criação de aplicações BackEndde , requisições HTTP.Usado por PayPal, IBM, Uber,etc;
 const app = express();
