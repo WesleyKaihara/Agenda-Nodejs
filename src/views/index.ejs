@@ -17,7 +17,7 @@
             Seus contatos estão abaixo
           </p>
           <%- include('includes/messages') %>
-            <% if(contatos.length> 0 ) { %>
+            <% if(alunos.length> 0 ) { %>
               <div class="resposive-table">
                 <table class="table my-3">
                   <tr>
@@ -35,26 +35,26 @@
                     </th>
                   </tr>
 
-                  <% contatos.forEach(contato=> {%>
+                  <% alunos.forEach(contato=> {%>
 
                     <tr>
                       <td>
-                        <%= contato.nome %>
+                        <%= aluno.nome %>
                       </td>
                       <td>
-                        <%= contato.sobrenome %>
+                        <%= aluno.sobrenome %>
                       </td>
                       <td>
-                        <%= contato.telefone %>
+                        <%= aluno.telefone %>
                       </td>
                       <td>
-                        <%= contato.email %>
+                        <%= aluno.email %>
                       </td>
                       <td>
-                        <a href="/contato/index/<%= contato._id%>">Editar</a>
+                        <a href="/contato/index/<%= aluno._id%>">Editar</a>
                       </td>
                       <td>
-                        <a class="text-danger" href="/contato/delete/<%= contato._id%>">Excluir</a>
+                        <a class="text-danger" href="/contato/delete/<%= aluno._id%>">Excluir</a>
                       </td>
                     </tr>
 

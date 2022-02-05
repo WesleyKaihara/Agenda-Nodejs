@@ -11,15 +11,15 @@
 
         <div class="col-lg-8 my-3">
           <h1 class=" text-center">
-            Contato
+            Alunos
           </h1>
           <p class="text-center lead">
-            Crie ou edite seus contatos abaixo
+            Crie ou edite os dados de alunos abaixo
           </p>
           <%- include('includes/messages') %>
 
-            <% if(contato._id) {%>
-              <form action="/contato/edit/<%= contato._id%>" method="POST">
+            <% if(aluno._id) {%>
+              <form action="/contato/edit/<%= aluno._id%>" method="POST">
                 <% }else { %>
                   <form action="/contato/register" method="POST">
                     <%}%>
@@ -27,25 +27,35 @@
 
                       <div class="form-group">
                         <label>Nome</label>
-                        <input value="<%= contato.nome %>" type="text" class="form-control" name="nome">
+                        <input value="<%= aluno.nome %>" type="text" class="form-control" name="nome">
                       </div>
 
                       <div class="form-group">
                         <label>Sobrenome</label>
-                        <input value="<%= contato.sobrenome %>" type="text" class="form-control" name="sobrenome">
+                        <input value="<%= aluno.sobrenome %>" type="text" class="form-control" name="sobrenome">
                       </div>
 
                       <div class="form-group">
                         <label>Email</label>
-                        <input value="<%= contato.email %>" type="email" class="form-control" name="email">
+                        <input value="<%= aluno.email %>" type="email" class="form-control" name="email">
                       </div>
 
                       <div class="form-group">
                         <label>Telefone</label>
-                        <input value="<%= contato.telefone %>" type="tel" class="form-control" name="telefone">
+                        <input value="<%= aluno.telefone %>" type="tel" class="form-control" name="telefone">
                       </div>
 
-                      <br />
+                      <div class="form-group">
+
+                        <label>Turma</label><br>
+                        <input type="radio" name="turma" value="1">
+                        <label for="1">Primeiro Ano</label><br>
+                        <input type="radio" name="turma" value="2">
+                        <label for="2">Segundo Ano</label><br>
+                        <input type="radio" name="turma" value="3">
+                        <label for="3">Terceiro Ano</label><br>
+                      </div>
+                      <br>
                       <button type="submit" class="btn btn-primary">Salvar</button>
                   </form>
 

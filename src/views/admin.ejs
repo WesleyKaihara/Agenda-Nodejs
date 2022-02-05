@@ -18,24 +18,50 @@
           </p>
 
           <div>
-            <% console.log(session)%>
-              <p>
-                <b>Email:</b>
-                <%= session.user.email%>
-              </p>
+            <div class="row">
+
+              <div class="col-lg">
+                <h4>Faça o cadastro de Contribuidores</h4>
+                <p>Para cadastrar alunos e professores, preencha o formulário abaixo:</p>
+
+                <form action="/login/register" method="POST">
+                  <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+                  <div class="form-group">
+                    <label>E-mail</label>
+                    <input type="email" class="form-control" name="email">
+                  </div>
+
+                  <div class="form-group">
+                    <label>Senha</label>
+                    <input type="password" class="form-control" name="password">
+                  </div>
+                  <br>
+                  <div class="form-group">
+
+                    <label>Cargo</label><br>
+                    <input type="radio" name="cargo" value="Aluno">
+                    <label for="html">Aluno</label><br>
+                    <input type="radio" name="cargo" value="Professor">
+                    <label for="Professor">Professor</label><br>
+                  </div>
+
+                  <br />
+                  <button type="submit" class="btn btn-primary">Criar conta</button>
+                </form>
+              </div>
+            </div>
+
+            <%- include('includes/messages')%>
+
+
+
           </div>
+          <!--Fim do Conteúdo-->
 
-          <%- include('includes/messages')%>
-
-
+          <div class="col-lg-2"></div>
+          <!--borda da Página -->
 
         </div>
-        <!--Fim do Conteúdo-->
-
-        <div class="col-lg-2"></div>
-        <!--borda da Página -->
-
       </div>
-    </div>
 
-    <%- include('includes/footer') %>
+      <%- include('includes/footer') %>
