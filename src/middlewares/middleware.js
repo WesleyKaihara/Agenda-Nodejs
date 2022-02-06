@@ -30,3 +30,22 @@ exports.loginRequired = (req, res, next) => {  //Verifica se Usuário esta logad
 }
 
 
+exports.isAdmin = async (req, res, next) => {
+  if (!req.session.user) {
+    req.flash('errors', 'Você precisa fazer login');
+    req.session.save(() => res.redirect('/login/index'));
+    return
+  }
+  if (req.session.user.cargo !== 'Admin') {
+    req.flash('errors', 'Você não tem a permissão de admin');
+    req.session.save(() => res.redirect('/login/index'));
+    return
+  }
+  if (req.session.user.cargo === 'Admin') {
+    req.flash('success', 'Você pode ver os dados do alunos');
+    next()
+  }
+
+
+}
+

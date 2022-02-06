@@ -11,11 +11,13 @@
 
         <div class="col-lg-8 my-3">
           <h1 class=" text-center">
-            Agenda
+            Alunos
           </h1>
+
           <p class="text-center lead">
-            Seus contatos estão abaixo
+            Lista de alunos abaixo:
           </p>
+
           <%- include('includes/messages') %>
             <% if(alunos.length> 0 ) { %>
               <div class="resposive-table">
@@ -33,9 +35,12 @@
                     <th>
                       Email
                     </th>
+                    <th>
+                      Turma
+                    </th>
                   </tr>
 
-                  <% alunos.forEach(contato=> {%>
+                  <% alunos.forEach(aluno=> {%>
 
                     <tr>
                       <td>
@@ -49,6 +54,15 @@
                       </td>
                       <td>
                         <%= aluno.email %>
+                      </td>
+                      <td>
+                        <%if(aluno.turma==='1' ){%>
+                          Primeiro Ano
+                          <%}else if (aluno.turma==='2' ){%>
+                            Segundo Ano
+                            <%}else if (aluno.turma==='3' ){%>
+                              Terceiro Ano
+                              <%}%>
                       </td>
                       <td>
                         <a href="/contato/index/<%= aluno._id%>">Editar</a>
@@ -74,4 +88,4 @@
       </div>
     </div>
 
-    <%- include('includes/footer') %>l
+    <%- include('includes/footer') %>

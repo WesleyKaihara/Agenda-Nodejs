@@ -16,12 +16,12 @@
           <p class="text-center lead">
             Consegue analisar e modificar dados de usuários
           </p>
+          <%- include('includes/messages')%>
 
-          <div>
             <div class="row">
 
               <div class="col-lg">
-                <h4>Faça o cadastro de Contribuidores</h4>
+                <h4>Criar conta institucional</h4>
                 <p>Para cadastrar alunos e professores, preencha o formulário abaixo:</p>
 
                 <form action="/login/register" method="POST">
@@ -46,22 +46,29 @@
                   </div>
 
                   <br />
-                  <button type="submit" class="btn btn-primary">Criar conta</button>
+                  <button type="button" class="btn btn-primary">Criar conta</button>
+
                 </form>
+                <hr>
               </div>
+
             </div>
-
-            <%- include('includes/messages')%>
-
-
-
-          </div>
-          <!--Fim do Conteúdo-->
-
-          <div class="col-lg-2"></div>
-          <!--borda da Página -->
-
+            <br>
+            <form action="/Portal/alunos" method="GET">
+              <button class="btn btn-primary">Ver Alunos</button>
+            </form>
+            <br>
+            <hr>
+            <form action="/contato/index" method="GET">
+              <button class="btn btn-primary">Cadastrar alunos</button>
+            </form>
         </div>
-      </div>
+        <!--Fim do Conteúdo-->
 
-      <%- include('includes/footer') %>
+        <div class="col-lg-2"></div>
+        <!--borda da Página -->
+
+      </div>
+    </div>
+
+    <%- include('includes/footer') %>

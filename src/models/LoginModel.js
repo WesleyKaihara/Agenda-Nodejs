@@ -1,46 +1,46 @@
-const mongoose = require('mongoose');
-const validator = require('validator');
-const bcryptjs = require('bcryptjs');
+const mongoose = require('mongoose');//Controla dados do MongoDB - banco de dados
+const validator = require('validator');//Biblioteca para validação de dados - ex: email
+const bcryptjs = require('bcryptjs');//criptografia de senha
 
-const LoginSchema = new mongoose.Schema({    //tratar dados
+const LoginSchema = new mongoose.Schema({    //tratar dados - tudo requerido
   email: { type: String, required: true },
   password: { type: String, required: true },
   cargo: { type: String, required: true }
 });
 
-const LoginModel = mongoose.model('Login', LoginSchema);
+const LoginModel = mongoose.model('Login', LoginSchema); //table no banco de dados
 
 class Login {
-  constructor(body) {
+  constructor(body) {   //recebe dados dos inputs
     this.body = body;
-    this.errors = [];
-    this.user = null;
-    this.cargo = undefined;
+    this.errors = []; //erros começam vazios 
+    this.user = null; //sem usuário inicialmente
+    this.cargo = undefined; //sem cargo
   }
 
   async login() {
-    this.valida();
+    this.valida(); //valida os campos,email valido e tamanho da senha
 
-    if (this.errors.lenth > 0) return;
+    if (this.errors.lenth > 0) return;  //caso haja, retorna um erro 
 
     this.user = await LoginModel.findOne({ email: this.body.email });  //verifica se usuario ja existe
 
-    if (!this.user) {
-      this.errors.push('Usuário não existe');
+    if (!this.user) {  //se não encontrar no banco de dados
+      this.errors.push('Usuário não existe');//adiciona um erro
       return;
     }
 
-    if (!bcryptjs.compareSync(this.body.password, this.user.password)) {
-      this.errors.push('Senha incorreta');
-      this.user = null;
+    if (!bcryptjs.compareSync(this.body.password, this.user.password)) { //verifica se senha esta correta
+      this.errors.push('Senha incorreta');//adiciona erro
+      this.user = null; //mantem usuário nulo
     }
 
-    await this.Cargo();
+    await this.Cargo(); //Verifica cargo e armazena
 
   }
 
   async Cargo() {
-    await LoginModel.find({ email: this.body.email })
+    await LoginModel.find({ email: this.body.email }) //encontra perfil com o email adicionado no login
       .then(user => {
         this.cargo = user[0].cargo
       })
@@ -75,10 +75,6 @@ class Login {
     if (this.body.password.length < 3 || this.body.password.length >= 50) {
       this.errors.push('A senha precisa ter entre 3 e 50 caracteres')
     }
-
-    // if (this.body.cargo == undefined) {
-    //   this.errors.push('Selecione um Cargo')
-    // }
 
   }
 

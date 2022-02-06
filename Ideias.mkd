@@ -1,0 +1,34 @@
+# Sistema para Escola / Instituição de Ensino
+- Cadastro de Responsáveis
+- Cadastro de Professores
+- Cadastro de Alunos
+- Cadastro de Séries/Turmas/Disciplinas
+- Diário de Classe com faltas e presenças
+- Lançamento de Notas
+- Emissão de Boletins
+- Emissão de Histórico Escolar
+- Sistema de Avaliação
+- Desafios semanais
+- rankings 
+- Sistema de Recompensas 
+- Diferenciais atrativos
+- Eventos 
+- Aulas em video - Tutoriais
+- Cursos
+- Área de Estágios
+- Exposição de Arte
+
+
+## A fazer 
+- Rota de Index
+- Nova table com colunas:
+  - Email/Identificar
+  - Matérias(Ex:matemática,arte,geografia)
+- Cada Professor terá campo de Matéria 
+  - Problema(Casso professor tenha 2 matérias)
+  - Adicinar notas e faltas
+- Professor terá acesso somente a sua matéria 
+  - comparar valores da table de professores e notas
+- Rota que apresenta todos as Notas em formato de boletin
+- Rotas extras
+- Design 

@@ -1,4 +1,4 @@
-const mongoose = require('mongoose'); //Controla dados do MongoDB - banco de dadoss
+const mongoose = require('mongoose'); //Controla dados do MongoDB - banco de dados
 const validator = require('validator');  //Biblioteca para validação de dados - ex: email
 
 const AlunoSchema = new mongoose.Schema({    //tratar dados
@@ -43,8 +43,7 @@ Aluno.prototype.register = async function () {  //Cria aluno
   if (this.errors.length > 0) return;  //Verifica Erros
 
   await this.userExists();
-  console.log('Registrar')
-  console.log(this.errors)
+
   if (this.errors.length > 0) return;  //Verifica Erros
 
   this.aluno = await AlunoModel.create(this.body) //Armazena no banco 
@@ -57,8 +56,8 @@ Aluno.prototype.userExists = async function () {
   if (this.aluno) {
     this.errors.push('Usuário já existe');
   }
-
 }
+
 Aluno.prototype.valida = function () {  //Valida dados
   this.cleanUp(); //Elimina valores antigos e substitui
   //Validação 
@@ -71,7 +70,6 @@ Aluno.prototype.valida = function () {  //Valida dados
   if (this.body.turma === undefined) {
     this.errors.push('Selecione uma Turma')
   }
-
 }
 
 Aluno.prototype.cleanUp = function () { //Elimina valores antigos e substitui
@@ -94,9 +92,7 @@ Aluno.prototype.edit = async function (id) {  //Update de dados
   if (typeof id !== 'string') return;
   this.valida();
   if (this.errors.length > 0) return; //Verifica erros
-  this.aluno = await AlunoModel.findByIdAndUpdate(id, this.body, { new: true })
+  this.aluno = await AlunoModel.findByIdAndUpdate(id, this.body, { new: true });
 }
-
-
 
 module.exports = Aluno;

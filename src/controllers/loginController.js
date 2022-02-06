@@ -5,7 +5,6 @@ exports.index = (req, res) => {
 }
 
 exports.portal = (req, res) => {
-  console.log(req.session)
   if (req.session.user.cargo === 'Aluno') {
     return res.render('aluno', { session: req.session })
   }

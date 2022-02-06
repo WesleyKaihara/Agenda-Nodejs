@@ -1,13 +1,13 @@
 const express = require('express');  //Framework para nodejs auxilia na criação de aplicações BackEndde , requisições HTTP.Usado por PayPal, IBM, Uber,etc;
 const route = express.Router();
-const homeController = require('./src/controllers/homeController') //importa a Página Inicial 
+const TurmaController = require('./src/controllers/TurmaController') //importa a Página Inicial 
 const loginController = require('./src/controllers/loginController') //importa a parte funcional do sistema,controle de erros, verificação e recebimento de dados da página de LOGIN.
-const alunoController = require('./src/controllers/alunoController')//importa a parte funcional do sistema,controle de erros, verificação e recebimento de dados da página de CONTATO.
+const alunoController = require('./src/controllers/alunoController')//importa a parte funcional do sistema,controle de erros, verificação e recebimento de dados da página de ALUNO.
 
-const { loginRequired } = require('./src/middlewares/middleware')  // Middleware- Funciona como intermediario para verificar usário esta logado
+const { loginRequired, isAdmin } = require('./src/middlewares/middleware')  // Middleware- Funciona como intermediario para verificar usário esta logado
 
 //Rotas da Home
-route.get('/', homeController.index);  // Rota para acessar a página Principal do Sistema, onde são apresentados os contatos.
+route.get('/', isAdmin, TurmaController.index);  // Rota para acessar a página Principal do Sistema, onde são apresentados os contatos.
 
 
 //Rotas de login   
@@ -29,6 +29,7 @@ route.get('/contato/delete/:id', loginRequired, alunoController.delete); //Rota 
 
 //Rotas para Alunos
 
-route.get('/Portal', loginRequired, loginController.portal)
+route.get('/Portal', loginRequired, loginController.portal)//Verifica se usuário está logado , em seguida verifica seu cargo
+route.get('/Portal/alunos', isAdmin, TurmaController.index)//Somente Administradores possuem acesso,em seguida apresenta todos os alunos e seus respectivos dados
 
 module.exports = route;  //exporta todas os dados de controle de rotas 
