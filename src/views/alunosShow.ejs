@@ -1,0 +1,91 @@
+<%- include('includes/head') %>
+  <!--Recebe o cabeçalho  de outro arquivo (/includes/head)-->
+
+  <%- include('includes/nav') %>
+    <!--Recebe a barra de navegação de outro arquivo(/includes/nav)-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <!--borda da Página -->
+
+        <div class="col-lg-8 my-3">
+          <h1 class=" text-center">
+            Alunos
+          </h1>
+
+          <p class="text-center lead">
+            Lista de alunos abaixo:
+          </p>
+
+          <%- include('includes/messages') %>
+            <% if(alunos.length> 0 ) { %>
+              <div class="resposive-table">
+                <table class="table my-3">
+                  <tr>
+                    <th>
+                      Nome
+                    </th>
+                    <th>
+                      Sobrenome
+                    </th>
+                    <th>
+                      Telefone
+                    </th>
+                    <th>
+                      Email
+                    </th>
+                    <th>
+                      Turma
+                    </th>
+                  </tr>
+
+                  <% alunos.forEach(aluno=> {%>
+
+                    <tr>
+                      <td>
+                        <%= aluno.nome %>
+                      </td>
+                      <td>
+                        <%= aluno.sobrenome %>
+                      </td>
+                      <td>
+                        <%= aluno.telefone %>
+                      </td>
+                      <td>
+                        <%= aluno.email %>
+                      </td>
+                      <td>
+                        <%if(aluno.turma==='1' ){%>
+                          Primeiro Ano
+                          <%}else if (aluno.turma==='2' ){%>
+                            Segundo Ano
+                            <%}else if (aluno.turma==='3' ){%>
+                              Terceiro Ano
+                              <%}%>
+                      </td>
+                      <td>
+                        <a href="/contato/index/<%= aluno._id%>">Editar</a>
+                      </td>
+                      <td>
+                        <a class="text-danger" href="/contato/delete/<%= aluno._id%>">Excluir</a>
+                      </td>
+                    </tr>
+
+                    <% })%>
+
+                </table>
+              </div>
+              <% } else {%>
+                <p class="text-center lead">Não existem contatos na sua agenda</p>
+                <%}%>
+        </div>
+        <!--Fim do Conteúdo-->
+
+        <div class="col-lg-2"></div>
+        <!--borda da Página -->
+
+      </div>
+    </div>
+
+    <%- include('includes/footer') %>

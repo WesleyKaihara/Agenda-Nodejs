@@ -17,6 +17,7 @@
 - Cursos
 - Área de Estágios
 - Exposição de Arte
+- gamificação
 
 
 ## A fazer 

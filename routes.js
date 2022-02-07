@@ -3,11 +3,13 @@ const route = express.Router();
 const TurmaController = require('./src/controllers/TurmaController') //importa a Página Inicial 
 const loginController = require('./src/controllers/loginController') //importa a parte funcional do sistema,controle de erros, verificação e recebimento de dados da página de LOGIN.
 const alunoController = require('./src/controllers/alunoController')//importa a parte funcional do sistema,controle de erros, verificação e recebimento de dados da página de ALUNO.
+const homeController = require('./src/controllers/homeController')//importa a parte funcional do sistema,controle de erros, verificação e recebimento de dados da página de ALUNO.
+const notasController = require('./src/controllers/notasController')//importa a parte funcional do sistema,controle de erros, verificação e recebimento de dados da página de ALUNO.
 
 const { loginRequired, isAdmin } = require('./src/middlewares/middleware')  // Middleware- Funciona como intermediario para verificar usário esta logado
 
 //Rotas da Home
-route.get('/', isAdmin, TurmaController.index);  // Rota para acessar a página Principal do Sistema, onde são apresentados os contatos.
+route.get('/', homeController.index);  // Rota para acessar a página Principal do Sistema, onde são apresentados os contatos.
 
 
 //Rotas de login   
@@ -31,5 +33,10 @@ route.get('/contato/delete/:id', loginRequired, alunoController.delete); //Rota 
 
 route.get('/Portal', loginRequired, loginController.portal)//Verifica se usuário está logado , em seguida verifica seu cargo
 route.get('/Portal/alunos', isAdmin, TurmaController.index)//Somente Administradores possuem acesso,em seguida apresenta todos os alunos e seus respectivos dados
+
+
+//Rota para Professores
+route.post('/professor/alunos', loginRequired, notasController.register)
+
 
 module.exports = route;  //exporta todas os dados de controle de rotas 

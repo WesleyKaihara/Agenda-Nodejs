@@ -1,4 +1,4 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose');//Controla dados do MongoDB - banco de dados
 
 const HomeSchema = new mongoose.Schema({    //tratar dados
   titulo: { type: String, required: true },

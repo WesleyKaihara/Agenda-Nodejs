@@ -1,12 +1,8 @@
-//Página Inicial do sistema 
-//São apresentados os contatos de acordo com a session
-//http://localhost:3000
-
-
 const Aluno = require('../models/AlunoModel')
+const Notas = require('../models/NotasModel')
+
 
 exports.index = async (req, res) => {
   const alunos = await Aluno.buscaAlunos()
-  res.render('index', { alunos });
+  res.render('alunosShow', { alunos });
 }
-

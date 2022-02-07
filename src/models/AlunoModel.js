@@ -6,7 +6,7 @@ const AlunoSchema = new mongoose.Schema({    //tratar dados
   sobrenome: { type: String, required: true },
   email: { type: String, required: true },
   telefone: { type: String, required: false },
-  criadoEm: { type: Date, default: Date.now },
+  criadoEm: { type: Date, default: Date.now },  //valor padrão
   turma: { type: String, required: true },
 });
 //Define o tipo de dados de cada variável, se é requirida, valor padrão
@@ -26,7 +26,7 @@ Aluno.buscaPorId = async function (id) {   //função estática
   return aluno;
 }
 
-Aluno.buscaAlunos = async function () {   //função estática 
+Aluno.buscaAlunos = async function () {   //função estática , apresenta colunas da tabela Aluno
   const alunos = await AlunoModel.find()
     .sort({ criadoEm: -1 }) //ordem decrescente
   return alunos;
@@ -49,12 +49,12 @@ Aluno.prototype.register = async function () {  //Cria aluno
   this.aluno = await AlunoModel.create(this.body) //Armazena no banco 
 }
 
-Aluno.prototype.userExists = async function () {
+Aluno.prototype.userExists = async function () {  //Verifica se usuário existe
 
-  this.aluno = await AlunoModel.findOne({ email: this.body.email })
+  this.aluno = await AlunoModel.findOne({ email: this.body.email }) //busca usuário com email recebido do input
 
-  if (this.aluno) {
-    this.errors.push('Usuário já existe');
+  if (this.aluno) { //se encontrar algum valor no banco de dados
+    this.errors.push('Usuário já existe');  //gera um erro
   }
 }
 
@@ -65,10 +65,10 @@ Aluno.prototype.valida = function () {  //Valida dados
   if (this.body.email && !validator.isEmail(this.body.email)) this.errors.push('E-mail inválido');  //Valida email
   if (!this.body.nome) this.errors.push('Nome é um campo obrigatório'); //Nome existe ou não
   if (!this.body.email && !this.body.telefone) {  //Verifica se email ou telefone existe
-    this.errors.push('Pelo menos um aluno precisa ser enviado : email ou telefone');
+    this.errors.push('Pelo menos um contato precisa ser enviado : email ou telefone');//gera um erro
   }
-  if (this.body.turma === undefined) {
-    this.errors.push('Selecione uma Turma')
+  if (this.body.turma === undefined) { //Verifica se campo esta preenchido
+    this.errors.push('Selecione uma Turma') //Gera erro
   }
 }
 
@@ -79,7 +79,7 @@ Aluno.prototype.cleanUp = function () { //Elimina valores antigos e substitui
     }
   }
 
-  this.body = {
+  this.body = {  //Seta valores dos campos do usuário
     nome: this.body.nome,
     sobrenome: this.body.sobrenome,
     email: this.body.email,
@@ -92,7 +92,7 @@ Aluno.prototype.edit = async function (id) {  //Update de dados
   if (typeof id !== 'string') return;
   this.valida();
   if (this.errors.length > 0) return; //Verifica erros
-  this.aluno = await AlunoModel.findByIdAndUpdate(id, this.body, { new: true });
+  this.aluno = await AlunoModel.findByIdAndUpdate(id, this.body, { new: true });//Porcura coluna com valor da id e recebe novo valor do body
 }
 
 module.exports = Aluno;
