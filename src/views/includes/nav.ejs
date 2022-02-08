@@ -1,43 +1,13 @@
-<!--DICAS para mudar design e ainda funcionar o sistema no fim do Arquivo-->
+<header>
+  <a class="header_logo" href="/">Home</a>
+  <div class="header_nav">
+    <a href="/Portal">Portal do Aluno/Professor</a>
 
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-  <a class="navbar-brand" href="/">Agenda</a>
-  <!--Deixar esse link-->
-  <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
-    aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-    <span class="navbar-toggler-icon"></span>
-  </button>
-
-  <div class="collapse navbar-collapse" id="navbarSupportedContent">
-    <ul class="navbar-nav ml-auto">
-
-      <li class="nav-item">
-        <a class="nav-link" href="/Portal">Portal do Aluno/Professor</a>
-        <!--Deixar esse Link-->
-      </li>
-
-
-      <% if (user) { %>
-        <li class="nav-item">
-          <a class="nav-link" href="/login/logout">Sair</a>
-          <!--Deixar esse Link-->
-        </li>
-        <% } else { %>
-          <li class="nav-item">
-            <a class="nav-link" href="/login/index">Entrar</a>
-            <!--Deixar esse Link-->
-          </li>
-          <% }%>
-
-            <!--IF e ELSE Deixar tambem -->
-
-    </ul>
+    <% if (user) { %>
+      <a href="/login/logout">Sair</a>
+      <% } else { %>
+        <a href="/login/index">Entrar</a>
+        <% }%>
   </div>
 
-</nav>
-
-
-<!--DICAS-->
-<!--Nesta página somente deixar os links e a estrutura condicional (if e else feita com EJS)-->
-<!--Resto pode mudar que provavelmente ainda vai funcionar -->
-<!--Realizar pequenas mudanças e ir testando para não se perder-->
+</header>

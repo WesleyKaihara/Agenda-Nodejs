@@ -1,0 +1,72 @@
+<%- include('includes/head') %>
+  <!--Recebe o cabeçalho  de outro arquivo (/includes/head)-->
+
+  <%- include('includes/nav') %>
+    <!--Recebe a barra de navegação de outro arquivo(/includes/nav)-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <!--borda da Página -->
+
+        <div class="col-lg-8 my-3">
+          <h1 class=" text-center">
+            Alunos
+          </h1>
+          <p class="text-center lead">
+            Crie ou edite os dados de alunos abaixo
+          </p>
+          <%- include('includes/messages') %>
+
+            <% if(aluno._id) {%>
+              <form action="/contato/edit/<%= aluno._id%>" method="POST">
+                <% }else { %>
+                  <form action="/contato/register" method="POST">
+                    <%}%>
+                      <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+
+                      <div class="form-group">
+                        <label>Nome</label>
+                        <input value="<%= aluno.nome %>" type="text" class="form-control" name="nome">
+                      </div>
+
+                      <div class="form-group">
+                        <label>Sobrenome</label>
+                        <input value="<%= aluno.sobrenome %>" type="text" class="form-control" name="sobrenome">
+                      </div>
+
+                      <div class="form-group">
+                        <label>Email</label>
+                        <input value="<%= aluno.email %>" type="email" class="form-control" name="email">
+                      </div>
+
+                      <div class="form-group">
+                        <label>Telefone</label>
+                        <input value="<%= aluno.telefone %>" type="tel" class="form-control" name="telefone">
+                      </div>
+
+                      <div class="form-group">
+
+                        <label>Turma</label><br>
+                        <input type="radio" name="turma" value="1">
+                        <label for="1">Primeiro Ano</label><br>
+                        <input type="radio" name="turma" value="2">
+                        <label for="2">Segundo Ano</label><br>
+                        <input type="radio" name="turma" value="3">
+                        <label for="3">Terceiro Ano</label><br>
+                      </div>
+                      <br>
+                      <button type="submit" class="btn btn-primary">Salvar</button>
+                  </form>
+
+        </div>
+        <!--Fim do Conteúdo-->
+
+        <div class="col-lg-2"></div>
+        <!--borda da Página -->
+      </div>
+
+
+    </div>
+
+    <%- include('includes/footer') %>

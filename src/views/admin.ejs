@@ -5,70 +5,74 @@
     <!--Recebe a barra de navegação de outro arquivo(/includes/nav)-->
 
     <div class="container">
-      <div class="row">
-        <div class="col-lg-2"></div>
-        <!--borda da Página -->
 
-        <div class="col-lg-8 my-3">
-          <h1 class=" text-center">
-            Página do Administrador
-          </h1>
-          <p class="text-center lead">
-            Consegue analisar e modificar dados de usuários
-          </p>
-          <%- include('includes/messages')%>
 
-            <div class="row">
+      <h1 class="admin_title">
+        Página do Administrador
+      </h1>
 
-              <div class="col-lg">
-                <h4>Criar conta institucional</h4>
-                <p>Para cadastrar alunos e professores, preencha o formulário abaixo:</p>
+      <p>
+        Consegue analisar e modificar dados de usuários
+      </p>
 
-                <form action="/login/register" method="POST">
-                  <input type="hidden" name="_csrf" value=<%=csrfToken%>>
-                  <div class="form-group">
-                    <label>E-mail</label>
-                    <input type="email" class="form-control" name="email">
-                  </div>
+      <%- include('includes/messages')%>
 
-                  <div class="form-group">
-                    <label>Senha</label>
-                    <input type="password" class="form-control" name="password">
-                  </div>
-                  <br>
-                  <div class="form-group">
+        <div class="admin_content">
 
-                    <label>Cargo</label><br>
-                    <input type="radio" name="cargo" value="Aluno">
-                    <label for="html">Aluno</label><br>
-                    <input type="radio" name="cargo" value="Professor">
-                    <label for="Professor">Professor</label><br>
-                  </div>
+          <div class="admin_criarConta">
+            <h4>Criar conta institucional</h4>
+            <p>Para cadastrar alunos e professores, preencha o formulário abaixo:</p>
 
-                  <br />
-                  <button type="submit" class="btn btn-primary">Criar conta</button>
-
-                </form>
-                <hr>
+            <form action="/login/register" method="POST">
+              <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+              <div class="form-group">
+                <label>E-mail</label>
+                <input type="email" class="form-control" name="email">
               </div>
 
+              <div class="form-group">
+                <label>Senha</label>
+                <input type="password" class="form-control" name="password">
+              </div>
+              <br>
+              <div class="form-group">
+
+                <label>Cargo</label><br>
+                <input type="radio" name="cargo" value="Aluno">
+                <label for="html">Aluno</label><br>
+                <input type="radio" name="cargo" value="Professor">
+                <label for="Professor">Professor</label><br>
+              </div>
+              <br>
+              <button type="submit" class="btn btn-primary">Criar conta</button>
+
+            </form>
+
+          </div>
+
+
+          <div class="admin_mostrarAlunos">
+            <div>
+              <p>Dados de todos os alunos da instituição:</p>
+              <form action="/Portal/alunos" method="GET">
+                <button class="btn btn-primary">Ver Alunos</button>
+              </form>
             </div>
-            <br>
-            <form action="/Portal/alunos" method="GET">
-              <button class="btn btn-primary">Ver Alunos</button>
-            </form>
-            <br>
             <hr>
-            <form action="/contato/index" method="GET">
-              <button class="btn btn-primary">Cadastrar alunos</button>
-            </form>
+            <div>
+              <p>Cadastrar dados de Alunos (Nome,sobrenome,email,turma e telefone):</p>
+
+              <form action="/contato/index" method="GET">
+                <button class="btn btn-primary">Cadastrar alunos</button>
+              </form>
+
+            </div>
+
+          </div>
+
         </div>
         <!--Fim do Conteúdo-->
 
-        <div class="col-lg-2"></div>
-        <!--borda da Página -->
-
-      </div>
     </div>
 
     <%- include('includes/footer') %>

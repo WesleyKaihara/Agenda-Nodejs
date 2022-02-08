@@ -3,31 +3,33 @@
 
   <%- include('includes/nav') %>
     <!--Recebe a barra de navegação de outro arquivo(/includes/nav)-->
+    <div class="home_banner">
+    </div>
+    <div class="bg-text">
+      <h1>Página Principal</h1>
+    </div>
 
     <div class="container">
-      <div class="row">
-        <div class="col-lg-2"></div>
-        <!--borda da Página -->
+      <h1 class="metodologia_title">
+        Metodologia Inovadora
+      </h1>
 
-        <div class="col-lg-8 my-3">
-          <h1 class=" text-center">
-            Home
-          </h1>
-          <p class="text-center lead">
-            Ver eventos,tarefas,faltas e notas
-          </p>
-
-          <%- include('includes/messages')%>
-
-
+      <div class="gamificacao">
+        <div class="gamificacao_text">
 
         </div>
-        <!--Fim do Conteúdo-->
-
-        <div class="col-lg-2"></div>
-        <!--borda da Página -->
+        <div class="gamificacao_img">
+          <img src='./images/gamificacao.png' alt="gamificacao">
+        </div>
 
       </div>
+
+      <p class="text-center lead">
+        Ver eventos,tarefas,faltas e notas
+      </p>
+
+      <%- include('includes/messages')%>
+
     </div>
 
     <%- include('includes/footer') %>

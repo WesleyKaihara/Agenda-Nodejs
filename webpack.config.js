@@ -5,7 +5,8 @@ module.exports = {
   entry: './frontend/main.js',
   output: {
     path: path.resolve(__dirname, 'public', 'assets', 'js'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    publicPath: '/'
   },
   module: {
     rules: [{
@@ -18,9 +19,17 @@ module.exports = {
         }
       }
     }, {
+      test: /\.(jpe?g|png|gif|woff|woff2|eot|ttf|svg)(\?[a-z0-9=.]+)?$/,
+      loader: 'url-loader?limit=100000000',
+      options: {
+        name: '[name].[ext]',
+      }
+    },
+    {
       test: /\.css$/,
-      use: ['style-loader', 'css-loader']
-    }]
+      loader: "style-loader!css-loader"
+    },
+    ]
   },
   devtool: 'source-map'
 };
