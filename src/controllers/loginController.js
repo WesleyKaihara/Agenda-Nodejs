@@ -31,13 +31,13 @@ exports.register = async (req, res) => {
     if (login.errors.length > 0) {
       req.flash('errors', login.errors);
       req.session.save(function () {
-        return res.redirect('index');
+        return res.redirect('/Portal');
       });
       return
     }
     req.flash('success', 'Seu usário foi criado com sucesso');
     req.session.save(function () {
-      return res.redirect('index');
+      return res.redirect('/Portal');
     });
   } catch (e) {
     console.log(e);

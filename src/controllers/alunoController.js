@@ -33,7 +33,7 @@ exports.editIndex = async (req, res) => {
   const aluno = await Aluno.buscaPorId(req.params.id);
   if (!aluno) return res.render('404');
 
-  res.render('aluno', { aluno });
+  res.render('alunoEdit', { aluno });
 }
 
 exports.edit = async function (req, res) {
