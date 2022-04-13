@@ -15,11 +15,11 @@
           </h1>
 
           <p class="text-center lead">
-            Lista de alunos abaixo:
+            Lista de Vendas/Serviços abaixo:
           </p>
 
           <%- include('includes/messages') %>
-            <% if(alunos.length> 0 ) { %>
+            <% if(registros.length> 0 ) { %>
               <div class="resposive-table">
                 <table class="table my-3">
                   <tr>
@@ -27,48 +27,38 @@
                       Nome
                     </th>
                     <th>
-                      Sobrenome
+                      Valor
                     </th>
                     <th>
-                      Telefone
+                      Description
                     </th>
                     <th>
-                      Email
+                      Data
                     </th>
-                    <th>
-                      Turma
-                    </th>
+                    <th></th>
+                    <th></th>
                   </tr>
 
-                  <% alunos.forEach(aluno=> {%>
+                  <% registros.forEach(venda=> {%>
 
                     <tr>
                       <td>
-                        <%= aluno.nome %>
+                        <%= venda.nome %>
                       </td>
                       <td>
-                        <%= aluno.sobrenome %>
+                        <%= venda.valor %>
                       </td>
                       <td>
-                        <%= aluno.telefone %>
+                        <%= venda.description %>
                       </td>
                       <td>
-                        <%= aluno.email %>
+                        <%= venda.diaVenda %>
                       </td>
                       <td>
-                        <%if(aluno.turma==='1' ){%>
-                          Primeiro Ano
-                          <%}else if (aluno.turma==='2' ){%>
-                            Segundo Ano
-                            <%}else if (aluno.turma==='3' ){%>
-                              Terceiro Ano
-                              <%}%>
+                        <a href="/editarvenda/<%= venda._id%>">Editar</a>
                       </td>
                       <td>
-                        <a href="/contato/index/<%= aluno._id%>">Editar</a>
-                      </td>
-                      <td>
-                        <a class="text-danger" href="/contato/delete/<%= aluno._id%>">Excluir</a>
+                        <a class="text-danger" href="/deletarVenda/<%= venda._id%>">Excluir</a>
                       </td>
                     </tr>
 

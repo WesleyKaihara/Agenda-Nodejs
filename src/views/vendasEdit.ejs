@@ -1,0 +1,64 @@
+<%- include('includes/head') %>
+  <!--Recebe o cabeçalho  de outro arquivo (/includes/head)-->
+
+  <%- include('includes/nav') %>
+    <!--Recebe a barra de navegação de outro arquivo(/includes/nav)-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <!--borda da Página -->
+
+        <div class="col-lg-8 my-3">
+          <h1 class=" text-center">
+            Portal de Edição
+          </h1>
+          <p class="text-center lead">
+            Editar Nome do Cliente , Valor e Descrição
+          </p>
+          <%- include('includes/messages')%>
+
+            <div>
+              <p>
+                <b>Notas dos alunos</b>
+              </p>
+
+              <form action="/atualizarvenda/<%= venda._id%>" method="POST">
+
+                <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+
+                <div class="form-group">
+                  <label>Nome</label>
+                  <input value="<%= venda.nome %>" type="text" class=" form-control" name="nome"
+                    placeholder="Nome Completo">
+                </div>
+
+                <div class="form-group">
+                  <label>Valor</label>
+                  <input value="<%= venda.valor %>" type="number" class="form-control" name="valor"
+                    placeholder="Valor Final">
+                </div>
+
+                <div class="form-group">
+                  <label>Produto/Serviço</label>
+                  <textarea name="description" rows="5" value="<%= venda.description %>"
+                    placeholder="Descreva o produto vendido ou serviço realizado"
+                    class=" form-control"><%= venda.description %></textarea>
+                </div>
+
+                <br>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+              </form>
+              <br>
+            </div>
+
+        </div>
+        <!--Fim do Conteúdo-->
+
+        <div class="col-lg-2"></div>
+        <!--borda da Página -->
+
+      </div>
+    </div>
+
+    <%- include('includes/footer') %>

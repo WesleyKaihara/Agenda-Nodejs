@@ -8,8 +8,8 @@ exports.portal = (req, res) => {
   if (req.session.user.cargo === 'Aluno') {
     return res.render('aluno', { session: req.session })
   }
-  else if (req.session.user.cargo === 'Professor') {
-    return res.render('professor', { session: req.session })
+  else if (req.session.user.cargo === 'User') {
+    return res.render('CadastrarVendas', { session: req.session })
   }
   else if (req.session.user.cargo === 'Admin') {
     return res.render('admin', { session: req.session })
@@ -56,7 +56,7 @@ exports.login = async (req, res) => {
       req.session.save(function () {
         return res.redirect('index');
       });
-      return
+      return;
     }
 
     req.flash('success', 'Você entrou no sistema');
@@ -66,8 +66,8 @@ exports.login = async (req, res) => {
       if (req.session.user.cargo === 'Aluno') {
         return res.render('aluno', { session: req.session })
       }
-      else if (req.session.user.cargo === 'Professor') {
-        return res.render('professor', { session: req.session })
+      else if (req.session.user.cargo === 'User') {
+        res.redirect('/Vendas');
       }
       else if (req.session.user.cargo === 'Admin') {
         return res.render('admin', { session: req.session })

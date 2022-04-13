@@ -1,0 +1,64 @@
+<%- include('includes/head') %>
+  <!--Recebe o cabeçalho  de outro arquivo (/includes/head)-->
+
+  <%- include('includes/nav') %>
+    <!--Recebe a barra de navegação de outro arquivo(/includes/nav)-->
+
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-2"></div>
+        <!--borda da Página -->
+
+        <div class="col-lg-8 my-3">
+          <h1 class=" text-center">
+            Portal de Cadastros
+          </h1>
+          <p class="text-center lead">
+            Adicionar vendas ao sistema
+          </p>
+          <%- include('includes/messages')%>
+
+            <div>
+              <p>
+                <b>Dados da Venda</b>
+              </p>
+
+              <form action="/cadastroVendas" method="POST">
+
+                <input type="hidden" name="_csrf" value=<%=csrfToken%>>
+
+                <div class="form-group">
+                  <label>Nome</label>
+                  <input type="text" class=" form-control" name="nome" placeholder="Nome Completo">
+                </div>
+
+                <div class="form-group">
+                  <label>Valor</label>
+                  <input type="number" class="form-control" name="valor" placeholder="Valor Final">
+                </div>
+
+                <div class="form-group">
+                  <label>Produto/Serviço</label>
+                  <textarea name="description" rows="5" placeholder="Descreva o produto vendido ou serviço realizado"
+                    class=" form-control"></textarea>
+                </div>
+
+                <br>
+                <button type="submit" class="btn btn-primary">Salvar</button>
+              </form>
+              <br>
+              <form action="/Vendas" method="get">
+                <button type="submit" class="btn btn-primary">Ver todas as vendas</button>
+              </form>
+            </div>
+
+        </div>
+        <!--Fim do Conteúdo-->
+
+        <div class="col-lg-2"></div>
+        <!--borda da Página -->
+
+      </div>
+    </div>
+
+    <%- include('includes/footer') %>

@@ -12,7 +12,7 @@
       </h1>
 
       <p>
-        Consegue analisar e modificar dados de usuários
+        Consegue criar novos administradores
       </p>
 
       <%- include('includes/messages')%>
@@ -20,8 +20,8 @@
         <div class="admin_content">
 
           <div class="admin_criarConta">
-            <h4>Criar conta institucional</h4>
-            <p>Para cadastrar alunos e professores, preencha o formulário abaixo:</p>
+            <h4>Criar conta de acesso</h4>
+            <p>Para criar novo usuário , preencha o formulário abaixo:</p>
 
             <form action="/login/register" method="POST">
               <input type="hidden" name="_csrf" value=<%=csrfToken%>>
@@ -38,10 +38,8 @@
               <div class="form-group">
 
                 <label>Cargo</label><br>
-                <input type="radio" name="cargo" value="Aluno">
-                <label for="html">Aluno</label><br>
-                <input type="radio" name="cargo" value="Professor">
-                <label for="Professor">Professor</label><br>
+                <input type="radio" name="cargo" value="User">
+                <label for="User">User</label><br>
               </div>
               <br>
               <button type="submit" class="btn btn-primary">Criar conta</button>
@@ -49,29 +47,12 @@
             </form>
 
           </div>
-
-
-          <div class="admin_mostrarAlunos">
-            <div>
-              <p>Dados de todos os alunos da instituição:</p>
-              <form action="/Portal/alunos" method="GET">
-                <button class="btn btn-primary">Ver Alunos</button>
-              </form>
-            </div>
-            <hr>
-            <div>
-              <p>Cadastrar dados de Alunos (Nome,sobrenome,email,turma e telefone):</p>
-
-              <form action="/contato/index" method="GET">
-                <button class="btn btn-primary">Cadastrar alunos</button>
-              </form>
-
-            </div>
-
-          </div>
-
         </div>
-        <!--Fim do Conteúdo-->
+
+    </div>
+
+    </div>
+    <!--Fim do Conteúdo-->
 
     </div>
 
